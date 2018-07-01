@@ -1,0 +1,42 @@
+git status pokazva dali ti e modifiran faila ili ne
+//pravim nov branch i switchvame na nego
+git checkout -b mybranch
+//git commit -am "some commentar"
+sega swithcva na mastera
+//git checkout master
+pravi si niakakvi promeni po mastera
+//git commit -am "some comment"
+//proverka na historito
+git log --oneline --decorate --all --graph
+//sega obache mybranch e nazad ot promenite v mastera i triabva da napravim rebase
+//vrushtame se kum mybranch
+git checkout mybranch
+//rebasvame - triabva da napishem imeto na sourse brancha niakakvigi
+git rebase master
+//sega reshavame che e vreme za mergvane
+git checkout master
+git diff -tazi komanda sravniava razlikite git diff master imetonaDrugiaBranch
+git merge mybranch
+//sega veche mojem da iztriem nashia branch
+git branch -d mybranch
+
+//stupki v intelig
+1. pravi si new local branch s checkout checknat
+2. vsiaka change det pravi se comitva (ama ne se pushva; ako sum zabravila da gi komitna gi pokazva i v mastera i sa cherveni)
+(3-> tva se pravi za da se otraziat eventualni promeni ako sa naoraveni ot drugite po mastera)
+3. dokato sme na branch01 (demek ne master brancha) pravim rebase ot mastera (git rebase master); 
+4. vrushtame se na mastera (git checkout master)
+5. mergvame (git merge imetoNaBrancha det shte mergvame kum mastera)
+6. nakraia triem brancha si (git branch -d imetomu)
+
+//3ti tut
+svalili sme si master brancha, pravim niakakva promiana davame commit (bez push)
+2. pravim si nov branch i checkoutvame na nego; pravim niakakvi confilicting changes po nego
+3. minavame obratno na masterbrancha i tam pravim niakakvi promeni na sushtia fail i gi comitvame
+4. minava na nemaster brancha i gleda razlikite (git difftool master imetoNaDrBranch)
+
+//4ti tut da predpolojim che drugite devs sa napravili promeni po mastera v github i nie si pravim promeni po localnia branch
+//nie ako dadem git status vijdame samo nashiate localni promeni, za da vidim dali ima i promeni vurhu remote brancha
+1. git fetch origin master(tazi komanda prosto updatva references, za da mojem da vidim promenite)
+2. sega kato dadem git status ni pokazva istinskite razliki i ni predlaga da napravim pull (ama mojem da napravim pull + rebase ednovremenno) git pull --rebase origin master
+3. produljavame si rabotata i kat sme gotovi commit push
